@@ -386,7 +386,7 @@ EOF;
 
 <div class="mdui-appbar mdui-shadow-0 " >
 	<div class="mdui-toolbar" >
-            <span class="mdui-btn mdui-btn-icon mdui-ripple mdui-ripple-white"
+            <span class="mdui-btn mdui-btn-icon mdui-ripple mdui-ripple-white dreamcat-menu-toggle"
                   mdui-drawer="{target: '#main-drawer', swipe: true}" >
                 <i class="mdui-icon material-icons dreamcat-icon-white" >menu</i >
             </span >

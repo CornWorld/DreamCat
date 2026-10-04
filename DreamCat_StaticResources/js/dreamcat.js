@@ -1,13 +1,18 @@
-/* 返回顶部 Start */
+/* 返回顶部 + 菜单按钮悬浮态 Start */
 const dreamcatBackTop = document.getElementById('back-top');
+const dreamcatMenuToggle = document.querySelector('.dreamcat-menu-toggle');
 
 const dreamcatScrollFunction = () => {
-    if (!dreamcatBackTop) return;
     const scrolled = document.body.scrollTop > 30 || document.documentElement.scrollTop > 30;
-    dreamcatBackTop.style.display = scrolled ? 'block' : 'none';
+
+    if (dreamcatBackTop) {
+        dreamcatBackTop.style.display = scrolled ? 'block' : 'none';
+    }
+    dreamcatMenuToggle?.classList.toggle('is-scrolled', scrolled);
 };
 
 window.addEventListener('scroll', dreamcatScrollFunction, { passive: true });
+dreamcatScrollFunction();
 
 const dreamcatSmoothScroll = typeof SmoothScroll !== 'undefined' ? new SmoothScroll("a[href*='#']") : null;
 
@@ -19,7 +24,7 @@ if (dreamcatBackTop) {
         });
     });
 }
-/* 返回顶部 End */
+/* 返回顶部 + 菜单按钮悬浮态 End */
 
 const dreamcatThemeColors = {
     primary: {

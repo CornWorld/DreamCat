@@ -801,3 +801,17 @@ a {
 		opacity: 1;
 	}
 }
+
+/* ========== 菜单按钮悬浮 (issue #118) ========== */
+.dreamcat-menu-toggle {
+	position: fixed;
+	top: 10px;
+	left: 12px;
+	z-index: 2000;
+}
+
+/* 滚动后脱离白色头图区域, 图标切换为主题色以保证可见 */
+.dreamcat-menu-toggle.is-scrolled .mdui-icon,
+.dreamcat-menu-toggle.is-scrolled i {
+	color: var(--dreamcat-theme-primary, #3f51b5) !important;
+}
