@@ -9,6 +9,10 @@ QQ交流群: `1034830519`
 | [`DreamCat 2.x`](https://github.com/LychApe/DreamCat/tree/2.x_LTS)        | **Long Time Support** | 1 Aug  2023  | 13 Jul  2021 |
 | `DreamCat 1.x`                                                            |       **End of Life** | 18 Feb 2021  | 15 Feb  2019 |
 
+## 环境兼容
+
+`DreamCat 3.x` 已在 `Typecho 1.3.0` + `PHP 8.4` (nginx / SQLite) 环境下完成全模板回归:首页、文章、独立页面、自定义模板页(友链)、分类/标签/作者归档、搜索、404 与 Feed 均正常,后台主题配置中心正常,无 PHP 弃用警告。
+
 ## 鸣谢
 
 `JetBrains` 提供了轻便的字体(Jetbrains Mono)。   
