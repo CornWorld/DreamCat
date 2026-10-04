@@ -141,7 +141,7 @@ function dreamcatRenderAdminNotice(string $message, int $delay = 2500): void
     echo '<script>setTimeout(function(){ location.href = "' . $adminUrl . '"; }, ' . $delay . ');</script>';
 }
 
-function dreamcatRenderAdjacentPost($widget, string $comparisonOperator, int $sortDirection, array $config): void
+function dreamcatRenderAdjacentPost($widget, string $comparisonOperator, string $sortDirection, array $config): void
 {
     $db = Typecho_Db::get();
     $sql = $db->select()->from('table.contents')->where('table.contents.created ' . $comparisonOperator . ' ?', $widget->created)->where(

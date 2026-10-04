@@ -151,7 +151,7 @@
 		src="<?php CustomCDN_FAM('DreamCat_StaticResources/js/', '', 'js/dreamcat.js', 'dreamcat.js'); ?>" >
 </script >
 <script >
-	hljs.initHighlightingOnLoad();
+	hljs.highlightAll();
 </script >
 
 
