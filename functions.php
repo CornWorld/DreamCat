@@ -8,7 +8,7 @@ require_once 'component/config.php';
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 function themeVersion(): string
 {
-    return '3.0.260502';
+    return '3.0.261004';
 }
 
 function defaultBackgroundImage(): string

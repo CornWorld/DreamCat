@@ -5,7 +5,7 @@ QQ交流群: `1034830519`
 
 | 版本                                                                        |                  维护状态 |    最近更新时间    |    版本诞生时间    |
 |---------------------------------------------------------------------------|----------------------:|:------------:|:------------:|
-| [`DreamCat 3.x`](https://github.com/LychApe/DreamCat/tree/InsiderPreview) |          **Official** | 2 May  2026  | 6 Jul  2022  |
+| [`DreamCat 3.x`](https://github.com/LychApe/DreamCat/tree/InsiderPreview) |          **Official** | 4 Oct  2026  | 6 Jul  2022  |
 | [`DreamCat 2.x`](https://github.com/LychApe/DreamCat/tree/2.x_LTS)        | **Long Time Support** | 1 Aug  2023  | 13 Jul  2021 |
 | `DreamCat 1.x`                                                            |       **End of Life** | 18 Feb 2021  | 15 Feb  2019 |
 
@@ -43,6 +43,15 @@ QQ交流群: `1034830519`
 ## 更新日志
 
 ### 最新版本
+
+> ### DreamCat 3.0.261004  [`下载`](https://github.com/CornWorld/DreamCat/archive/refs/tags/3.0.261004.zip)
+> 1. `适配` Typecho 1.3.0 + PHP 8.4 全模板回归(首页/文章/页面/归档/搜索/404/Feed/后台配置中心)
+> 2. `修复` 文章页"上一篇/下一篇"链接地址缺失(全 PHP 版本)
+> 3. `修复` PHP 8 下存在相邻文章时文章页 TypeError
+> 4. `修复` 评论"取消回复"按钮失效
+> 5. `新增` 站点 favicon
+> 6. `升级` highlight.js 11.12.0 / smooth-scroll 16.1.3, 改用 `highlightAll()`
+> 7. `变更` 代码现代化, 语法基线提升至 PHP 8.0+ 与 ES2020
 
 > ### DreamCat 3.0.260502  [`下载`](https://github.com/LychApe/DreamCat/archive/refs/tags/3.0.260502.zip)
 > 1. `优化` DreamCat 主题配置中心布局和样式
