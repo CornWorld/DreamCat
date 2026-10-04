@@ -38,6 +38,7 @@ $dreamcatAccentHex = dreamcatThemeColorHex('accent', $dreamcatAccentColor);
 			} catch (e) {}
 		})();
 	</script>
+	<link rel="icon" type="image/png" href="<?php CustomCDN_FAM('DreamCat_StaticResources/img/', '', 'img/favicon.png', 'favicon.png'); ?>" >
 	<title >
         <?php $this->archiveTitle([
             'category' => _t('分类：%s'),
@@ -173,8 +174,8 @@ $dreamcatAccentHex = dreamcatThemeColorHex('accent', $dreamcatAccentColor);
 	    }
 
         echo <<<EOF
-		.dreamcat-img-header-md { height:${md_height}px; }
-		.dreamcat-img-header-sm { height:${sm_height}px; }
+		.dreamcat-img-header-md { height:{$md_height}px; }
+		.dreamcat-img-header-sm { height:{$sm_height}px; }
 
 EOF;
         ?>

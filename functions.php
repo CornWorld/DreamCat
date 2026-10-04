@@ -162,6 +162,7 @@ function dreamcatRenderAdjacentPost($widget, string $comparisonOperator, string 
 
     if ($content) {
         $content = $widget->filter($content);
+        $content['permalink'] = \Typecho\Router::url($content['type'], $content, Helper::options()->index);
         echo '<a href="' . $content['permalink'] . '" class="' . $linkClass . '"><div class="doc-footer-nav-text' . $textClass . '"><i class="mdui-icon material-icons">' . $icon . '</i><span class="doc-footer-nav-direction' . $directionClass . '">' . $label . '</span><div class="doc-footer-nav-chapter' . $chapterClass . '">' . $content['title'] . '</div></div></a>';
         return;
     }
