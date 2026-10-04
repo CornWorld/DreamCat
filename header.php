@@ -38,7 +38,11 @@ $dreamcatAccentHex = dreamcatThemeColorHex('accent', $dreamcatAccentColor);
 			} catch (e) {}
 		})();
 	</script>
+	<?php if ($this->options->DC_WebFavicon): ?>
+	<link rel="icon" href="<?php $this->options->DC_WebFavicon(); ?>" >
+	<?php else: ?>
 	<link rel="icon" type="image/png" href="<?php CustomCDN_FAM('DreamCat_StaticResources/img/', '', 'img/favicon.png', 'favicon.png'); ?>" >
+	<?php endif; ?>
 	<title >
         <?php $this->archiveTitle([
             'category' => _t('分类：%s'),

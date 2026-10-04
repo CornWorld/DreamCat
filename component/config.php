@@ -65,6 +65,16 @@ function themeConfig($form): void
 
     $addText('DC_AdmireQCode', '博客赞赏二维码地址', '在这里填入赞赏二维码地址,留空则不显示');
 
+    $addRadio('DC_TocModeRadio', [
+        'TureMode' => '开启文章目录',
+        'FalseMode' => '关闭文章目录',
+    ], 'TureMode', '文章目录开关');
+
+    $addCheckbox('DC_PostFeature', [
+        'DCCodeCopy' => _t('代码块复制按钮'),
+        'DCImageLightbox' => _t('图片灯箱'),
+    ], ['DCCodeCopy', 'DCImageLightbox'], '文章功能增强');
+
     $addCheckbox('DC_GlobalApp', [
         'DCShowClickEffect' => _t('点击特效'),
         'DCShowPublicationTime' => _t('首页文章显示发表时间'),
