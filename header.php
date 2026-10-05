@@ -59,7 +59,7 @@ $dreamcatAccentHex = dreamcatThemeColorHex('accent', $dreamcatAccentColor);
 	<link rel="stylesheet"
 	      href="<?php CustomCDN_FAM('DreamCat_StaticResources/css/', '', 'css/md2.css', 'md2.css'); ?>" >
 	<link rel="stylesheet"
-	      href="<?php CustomCDN_FAM('DreamCat_StaticResources/css/', '', 'css/dreamcat.css?v=261005', 'dreamcat.css?v=261005'); ?>" >
+	      href="<?php CustomCDN_FAM('DreamCat_StaticResources/css/', '', 'css/dreamcat.css?v=261005b', 'dreamcat.css?v=261005b'); ?>" >
 	<link rel="stylesheet"
 	      href="<?php CustomCDN_FAM('DreamCat_StaticResources/icons/iconfont/', '', 'icons/iconfont/iconfont.css', 'iconfont.css'); ?>" >
 	<link rel="stylesheet"
