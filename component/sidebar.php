@@ -3,7 +3,7 @@
 		<img src="<?php $this->options->DC_HeadImageUrl(); ?>" class="card-img-top" style="width: 100%"
 		     alt="head image" />
     <?php } else { ?>
-		<img src="https://q1.qlogo.cn/g?b=qq&nk=10001&s=640" class="card-img-top" style="width: 100%"
+		<img src="https://q1.qlogo.cn/g?b=qq&nk=10001&s=140" class="card-img-top" style="width: 100%"
 		     alt="head image" />
     <?php } ?>
 	<div class="mdui-card-primary" >
