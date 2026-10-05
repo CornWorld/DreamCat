@@ -36,6 +36,39 @@ location ~* \.(css|js|png|jpg|jpeg|svg|woff2?|ttf|eot|map)$ {
 
 开启后本主题首页资源传输体积约 **270 KB**(未开启约 850 KB)。
 
+### 图标字体子集维护
+
+`MaterialIcons-Regular.woff2` 是按需子集(仅含主题使用的 25 个图标, 约 2 KB; 原始全量 43 KB)。**新增图标后需重新生成**, 否则新图标会显示为文字:
+
+```bash
+pip install fonttools brotli
+# 1. 从模板/JS 提取用到的图标名, 与官方清单比对:
+#    https://github.com/google/material-design-icons/blob/master/font/MaterialIcons-Regular.codepoints
+# 2. 在 GSUB 中删除非目标连字, 再按字形裁剪 (连字字体必须先删规则再裁字形):
+python3 - <<'PY'
+from fontTools.ttLib import TTFont
+f = TTFont('DreamCat_StaticResources/icons/material-icons/MaterialIcons-Regular.woff2')
+# 换用全量字体: git show HEAD~1:... 或重新下载, 以下 names 换成实际图标列表
+names = ['menu', 'search']  # ← 所有用到的图标
+codepoints = {l.split()[0]: int(l.split()[1], 16)
+              for l in open('codepoints.txt')}  # 官方 codepoints 清单
+cmap = f.getBestCmap()
+keep = {cmap[codepoints[n]] for n in names}
+for lookup in f['GSUB'].table.LookupList.Lookup:
+    if lookup.LookupType != 4: continue
+    for st in lookup.SubTable:
+        for first in list(st.ligatures):
+            kept = [l for l in st.ligatures[first] if l.LigGlyph in keep]
+            st.ligatures[first] = kept if kept else None
+            if not kept: del st.ligatures[first]
+f.save('/tmp/pruned.ttf')
+PY
+python3 -m fontTools.subset /tmp/pruned.ttf \
+  --glyphs-file=glyphs.txt --flavor=woff2 --layout-features=liga,ccmp --no-hinting \
+  --output-file=DreamCat_StaticResources/icons/material-icons/MaterialIcons-Regular.woff2
+# glyphs.txt 内容: 26 个字母 + 下划线的字形名(经 cmap 反查) + 25 个图标字形名
+```
+
 ## 鸣谢
 
 `JetBrains` 提供了轻便的字体(Jetbrains Mono)。   
