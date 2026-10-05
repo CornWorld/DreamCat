@@ -1,3 +1,12 @@
+/* Material Icons 字体 (子集: 仅含主题使用的图标, 由上游全量字体裁剪生成) */
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+  src: url(../icons/material-icons/MaterialIcons-Regular.woff2) format('woff2');
+}
+
 .dreamcat-drawer-list {
 	background-color: transparent;
 	list-style: none;

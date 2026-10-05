@@ -139,7 +139,7 @@
 </div >
 
 <script type="module"
-		src="<?php CustomCDN_FAM('DreamCat_StaticResources/js/', '', 'js/mdui-lite.js', 'mdui-lite.js'); ?>" >
+		src="<?php CustomCDN_FAM('DreamCat_StaticResources/js/', '', 'js/mdui-lite.js?v=261005', 'mdui-lite.js'); ?>" >
 </script >
 <script
 		src="<?php CustomCDN_FAM('DreamCat_StaticResources/js/', '', 'js/highlight.min.js', 'highlight.min.js'); ?>" >

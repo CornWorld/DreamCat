@@ -55,11 +55,11 @@ $dreamcatAccentHex = dreamcatThemeColorHex('accent', $dreamcatAccentColor);
 	<!-- 使用url函数转换相关路径 -->
 	<link rel="shortcut icon" href="<?php echo($this->options->DC_WebFavicon()); ?>" type="image/x-icon" />
 	<link rel="stylesheet"
-	      href="<?php CustomCDN_FAM('DreamCat_StaticResources/css/', '', 'css/mdui-lite.css', 'mdui-lite.css'); ?>" >
+	      href="<?php CustomCDN_FAM('DreamCat_StaticResources/css/', '', 'css/mdui-lite.css?v=261005', 'mdui-lite.css'); ?>" >
 	<link rel="stylesheet"
 	      href="<?php CustomCDN_FAM('DreamCat_StaticResources/css/', '', 'css/md2.css', 'md2.css'); ?>" >
 	<link rel="stylesheet"
-	      href="<?php CustomCDN_FAM('DreamCat_StaticResources/css/', '', 'css/dreamcat.css', 'dreamcat.css'); ?>" >
+	      href="<?php CustomCDN_FAM('DreamCat_StaticResources/css/', '', 'css/dreamcat.css?v=261005', 'dreamcat.css?v=261005'); ?>" >
 	<link rel="stylesheet"
 	      href="<?php CustomCDN_FAM('DreamCat_StaticResources/icons/iconfont/', '', 'icons/iconfont/iconfont.css', 'iconfont.css'); ?>" >
 	<link rel="stylesheet"
