@@ -62,6 +62,7 @@
             });
         };
 
+        // 文章页为整页生命周期, 监听器随页面卸载回收, 无需显式移除
         window.addEventListener('scroll', () => {
             if (!ticking) {
                 ticking = true;
@@ -104,7 +105,12 @@
         fab.className = 'dreamcat-toc-fab mdui-fab mdui-ripple mdui-color-theme-accent';
         fab.title = '目录';
         fab.innerHTML = '<i class="mdui-icon material-icons">format_list_bulleted</i>';
-        fab.addEventListener('click', openTocDialog);
+        fab.addEventListener('click', () => {
+            if (typeof mdui === 'undefined') {
+                return;
+            }
+            openTocDialog();
+        });
         document.body.appendChild(fab);
     };
 
@@ -133,13 +139,16 @@
     if (config.codeCopy) {
         content.querySelectorAll('pre').forEach((pre) => {
             const code = pre.querySelector('code') ?? pre;
+            const getText = () => (code === pre
+                ? [...pre.childNodes].filter((n) => n.nodeType === Node.TEXT_NODE).map((n) => n.textContent).join('')
+                : code.innerText);
             const button = document.createElement('button');
             button.type = 'button';
             button.className = 'dreamcat-code-copy';
             button.textContent = '复制';
             button.addEventListener('click', async () => {
                 try {
-                    await copyText(code.innerText.replace(/\n$/, ''));
+                    await copyText(getText().replace(/\n$/, ''));
                     button.textContent = '已复制';
                     button.classList.add('is-copied');
                 } catch {
@@ -159,7 +168,9 @@
         overlay.classList.add('is-closing');
         setTimeout(() => overlay.remove(), 200);
         document.removeEventListener('keydown', overlay._onKeydown);
-        document.documentElement.style.overflow = '';
+        if (!document.querySelector('.dreamcat-lightbox:not(.is-closing)')) {
+            document.documentElement.style.overflow = '';
+        }
     };
 
     if (config.lightbox) {
@@ -169,7 +180,10 @@
             }
             img.classList.add('dreamcat-lightboxable');
             img.addEventListener('click', () => {
-                if (img.naturalWidth < 150) {
+                if (!img.complete) {
+                    return;
+                }
+                if (img.naturalWidth > 0 && img.naturalWidth < 150) {
                     return;
                 }
                 const overlay = Object.assign(document.createElement('div'), { className: 'dreamcat-lightbox' });
@@ -192,6 +206,7 @@
                 overlay.addEventListener('click', () => closeLightbox(overlay));
                 document.addEventListener('keydown', overlay._onKeydown);
                 document.documentElement.style.overflow = 'hidden';
+                overlay.dataset.openedAt = String(Date.now());
                 document.body.appendChild(overlay);
             });
         });

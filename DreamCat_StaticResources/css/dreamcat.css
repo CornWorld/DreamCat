@@ -703,7 +703,7 @@ a {
 }
 
 @media (max-width: 1499px) {
-	/* !important 压过本文件上方 .dreamcat-toc 基础规则 (display:block 无媒体条件时同级靠后优先) */
+	/* !important 保持窄幅下面板隐藏: 基础规则 display:none 在 >=1500px 媒体查询内被翻转为 block, 此处反向压制 */
 	.dreamcat-toc {
 		display: none !important;
 	}
@@ -755,6 +755,7 @@ a {
 	background: rgba(255, 255, 255, .22);
 }
 
+/* #a5ffb9: 固定成功指示色, 与主题强调色无关 (强调色可为红/绿等, 用作成功反馈会歧义) */
 .dreamcat-code-copy.is-copied {
 	color: #a5ffb9;
 	border-color: rgba(165, 255, 185, .5);
