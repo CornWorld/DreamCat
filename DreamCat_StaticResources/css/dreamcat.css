@@ -703,6 +703,7 @@ a {
 }
 
 @media (max-width: 1499px) {
+	/* !important 压过本文件上方 .dreamcat-toc 基础规则 (display:block 无媒体条件时同级靠后优先) */
 	.dreamcat-toc {
 		display: none !important;
 	}

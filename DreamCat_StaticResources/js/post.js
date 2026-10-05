@@ -123,8 +123,11 @@
         textarea.style.opacity = '0';
         document.body.appendChild(textarea);
         textarea.select();
-        document.execCommand('copy');
+        const ok = document.execCommand('copy');
         textarea.remove();
+        if (!ok) {
+            throw new Error('execCommand copy failed');
+        }
     };
 
     if (config.codeCopy) {
