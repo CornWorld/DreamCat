@@ -15,6 +15,27 @@ QQ交流群: `1034830519`
 
 主题代码基线为 **PHP 8.0+**(使用了 `match`、箭头函数等语法),请搭配 PHP 8.0 及以上版本运行。
 
+### 推荐服务端配置
+
+主题自身资源已做 minify,但**压缩与缓存属于服务端职责**——未开启 gzip 时首屏资源体积约为开启后的 3 倍。推荐 nginx 配置:
+
+```nginx
+# http 块: 文本资源压缩 (woff2 字体本身已压缩, 无需加入)
+gzip on;
+gzip_vary on;
+gzip_comp_level 5;
+gzip_min_length 256;
+gzip_types text/plain text/css text/javascript application/javascript application/json application/xml image/svg+xml;
+
+# server 块: 静态资源缓存
+location ~* \.(css|js|png|jpg|jpeg|svg|woff2?|ttf|eot|map)$ {
+    expires 7d;
+    add_header Cache-Control "public";
+}
+```
+
+开启后本主题首页资源传输体积约 **270 KB**(未开启约 850 KB)。
+
 ## 鸣谢
 
 `JetBrains` 提供了轻便的字体(Jetbrains Mono)。   
