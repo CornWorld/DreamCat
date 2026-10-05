@@ -138,8 +138,8 @@
 		<i class="mdui-icon material-icons" >&#xe5d8;</i ></a >
 </div >
 
-<script
-		src="<?php CustomCDN_FAM('DreamCat_StaticResources/js/', '', 'js/mdui.min.js', 'mdui.min.js'); ?>" >
+<script type="module"
+		src="<?php CustomCDN_FAM('DreamCat_StaticResources/js/', '', 'js/mdui-lite.js', 'mdui-lite.js'); ?>" >
 </script >
 <script
 		src="<?php CustomCDN_FAM('DreamCat_StaticResources/js/', '', 'js/highlight.min.js', 'highlight.min.js'); ?>" >
