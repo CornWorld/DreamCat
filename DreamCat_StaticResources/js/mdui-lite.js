@@ -95,7 +95,7 @@ const ve = [
   "zIndex",
   "zoom"
 ];
-function f(e, t) {
+function m(e, t) {
   if (Qt(e)) {
     for (let i = 0; i < e.length; i += 1)
       if (t.call(e[i], i, e[i]) === !1)
@@ -110,7 +110,7 @@ function f(e, t) {
 }
 class O {
   constructor(t) {
-    return this.length = 0, t ? (f(t, (i, s) => {
+    return this.length = 0, t ? (m(t, (i, s) => {
       this[i] = s;
     }), this.length = t.length, this) : this;
   }
@@ -127,7 +127,7 @@ function be() {
       const i = t.trim();
       if (i[0] === "<" && i[i.length - 1] === ">") {
         let r = "div";
-        return f({
+        return m({
           li: "ul",
           tr: "tbody",
           td: "tr",
@@ -150,17 +150,17 @@ function be() {
 }
 const o = be();
 setTimeout(() => o("body").addClass("mdui-loaded"));
-const m = {
+const d = {
   $: o
 };
 o.fn.each = function(e) {
-  return f(this, e);
+  return m(this, e);
 };
 function W(e, t) {
   return e !== t && dt(e).contains(t);
 }
 function St(e, t) {
-  return f(t, (i, s) => {
+  return m(t, (i, s) => {
     e.push(s);
   }), e;
 }
@@ -201,17 +201,17 @@ function we(e, t, i, s, n) {
     if (!l)
       return;
     const c = kt(l);
-    function h(d, b) {
+    function h(f, b) {
       i.apply(
         b,
         // @ts-ignore
-        d._detail === void 0 ? [d] : [d].concat(d._detail)
-      ) === !1 && (d.preventDefault(), d.stopPropagation());
+        f._detail === void 0 ? [f] : [f].concat(f._detail)
+      ) === !1 && (f.preventDefault(), f.stopPropagation());
     }
-    function u(d) {
-      d._ns && !ee(d._ns).test(c.ns) || (d._data = s, n ? o(e).find(n).get().reverse().forEach((b) => {
-        (b === d.target || W(b, d.target)) && h(d, b);
-      }) : h(d, e));
+    function u(f) {
+      f._ns && !ee(f._ns).test(c.ns) || (f._data = s, n ? o(e).find(n).get().reverse().forEach((b) => {
+        (b === f.target || W(b, f.target)) && h(f, b);
+      }) : h(f, e));
     }
     const g = {
       type: c.type,
@@ -244,8 +244,8 @@ o.fn.trigger = function(e, t) {
   });
 };
 function v(e, t, ...i) {
-  return i.unshift(t), f(i, (s, n) => {
-    f(n, (r, a) => {
+  return i.unshift(t), m(i, (s, n) => {
+    m(n, (r, a) => {
       $(a) || (e[r] = a);
     });
   }), e;
@@ -256,13 +256,13 @@ function At(e) {
   const t = [];
   function i(s, n) {
     let r;
-    U(n) ? f(n, (a, l) => {
+    U(n) ? m(n, (a, l) => {
       Array.isArray(n) && !U(l) ? r = "" : r = a, i(`${s}[${r}]`, l);
     }) : (n == null || n === "" ? r = "=" : r = `=${encodeURIComponent(n)}`, t.push(encodeURIComponent(s) + r));
   }
-  return Array.isArray(e) ? f(e, function() {
+  return Array.isArray(e) ? m(e, function() {
     i(this.name, this.value);
-  }) : f(e, i), t.join("&");
+  }) : m(e, i), t.join("&");
 }
 const it = {}, N = {
   ajaxStart: "start.mdui.ajax",
@@ -294,7 +294,7 @@ function Ee(e) {
     timeout: 0,
     global: !0
   };
-  return f(it, (i, s) => {
+  return m(it, (i, s) => {
     [
       "beforeSend",
       "success",
@@ -310,7 +310,7 @@ function Oe(e) {
   let n = s.url || window.location.toString();
   const r = s.method.toUpperCase();
   let a = s.data;
-  const l = s.processData, c = s.async, h = s.cache, u = s.username, g = s.password, d = s.headers, b = s.xhrFields, I = s.statusCode, _ = s.dataType, S = s.contentType, L = s.timeout, y = s.global;
+  const l = s.processData, c = s.async, h = s.cache, u = s.username, g = s.password, f = s.headers, b = s.xhrFields, I = s.statusCode, _ = s.dataType, S = s.contentType, L = s.timeout, y = s.global;
   a && (at(r) || l) && !H(a) && !(a instanceof ArrayBuffer) && !(a instanceof Blob) && !(a instanceof Document) && !(a instanceof FormData) && (a = At(a)), a && at(r) && (n = Ht(n, a), a = null);
   function w(x, P, C, ...p) {
     y && o(document).trigger(x, P);
@@ -322,9 +322,9 @@ function Oe(e) {
     return new Promise((P, C) => {
       at(r) && !h && (n = Ht(n, `_=${Date.now()}`));
       const p = new XMLHttpRequest();
-      p.open(r, n, c, u, g), (S || a && !at(r) && S !== !1) && p.setRequestHeader("Content-Type", S), _ === "json" && p.setRequestHeader("Accept", "application/json, text/javascript"), d && f(d, (R, D) => {
+      p.open(r, n, c, u, g), (S || a && !at(r) && S !== !1) && p.setRequestHeader("Content-Type", S), _ === "json" && p.setRequestHeader("Accept", "application/json, text/javascript"), f && m(f, (R, D) => {
         $(D) || p.setRequestHeader(R, D + "");
-      }), /^([\w-]+:)?\/\/([^/]+)/.test(n) && RegExp.$2 !== window.location.host || p.setRequestHeader("X-Requested-With", "XMLHttpRequest"), b && f(b, (R, D) => {
+      }), /^([\w-]+:)?\/\/([^/]+)/.test(n) && RegExp.$2 !== window.location.host || p.setRequestHeader("X-Requested-With", "XMLHttpRequest"), b && m(b, (R, D) => {
         p[R] = D;
       }), i.xhr = p, i.options = s;
       let F;
@@ -344,7 +344,7 @@ function Oe(e) {
             D = r === "HEAD" ? void 0 : p.responseType === "text" || p.responseType === "" ? p.responseText : p.response, i.data = D, w(N.ajaxSuccess, i, "success", D, x, p), P(D);
         else
           x = "error", w(N.ajaxError, i, "error", p, x), C(new Error(x));
-        f([it.statusCode, I], (me, rt) => {
+        m([it.statusCode, I], (me, rt) => {
           rt && rt[p.status] && (R ? rt[p.status](D, x, p) : rt[p.status](p, x));
         }), w(N.ajaxComplete, i, "complete", p, x);
       }, p.onerror = function() {
@@ -371,7 +371,7 @@ o.ajaxSetup = Te;
 o.contains = W;
 const M = "_mduiElementDataStorage";
 function Lt(e, t) {
-  e[M] || (e[M] = {}), f(t, (i, s) => {
+  e[M] || (e[M] = {}), m(t, (i, s) => {
     e[M][ot(i)] = s;
   });
 }
@@ -386,16 +386,16 @@ function V(e, t, i) {
     return e[M][t];
 }
 o.data = V;
-o.each = f;
+o.each = m;
 o.extend = function(...e) {
-  return e.length === 1 ? (f(e[0], (t, i) => {
+  return e.length === 1 ? (m(e[0], (t, i) => {
     this[t] = i;
   }), this) : v(e.shift(), e.shift(), ...e);
 };
 function st(e, t) {
   let i;
   const s = [];
-  return f(e, (n, r) => {
+  return m(e, (n, r) => {
     i = t.call(window, r, n), i != null && s.push(i);
   }), [].concat(...s);
 }
@@ -408,12 +408,12 @@ function ie(e, t) {
   const i = (s) => {
     s = ot(s), e[M][s] && (e[M][s] = null, delete e[M][s]);
   };
-  $(t) ? (e[M] = null, delete e[M]) : H(t) ? t.split(" ").filter((s) => s).forEach((s) => i(s)) : f(t, (s, n) => i(n));
+  $(t) ? (e[M] = null, delete e[M]) : H(t) ? t.split(" ").filter((s) => s).forEach((s) => i(s)) : m(t, (s, n) => i(n));
 }
 o.removeData = ie;
 function $t(e) {
   const t = [];
-  return f(e, (i, s) => {
+  return m(e, (i, s) => {
     t.indexOf(s) === -1 && t.push(s);
   }), t;
 }
@@ -421,7 +421,7 @@ o.unique = $t;
 o.fn.add = function(e) {
   return new O($t(St(this.get(), o(e).get())));
 };
-f(["add", "remove", "toggle"], (e, t) => {
+m(["add", "remove", "toggle"], (e, t) => {
   o.fn[`${t}Class`] = function(i) {
     return t === "remove" && !arguments.length ? this.each((s, n) => {
       n.setAttribute("class", "");
@@ -429,13 +429,13 @@ f(["add", "remove", "toggle"], (e, t) => {
       if (!tt(n))
         return;
       const r = (A(i) ? i.call(n, s, n.getAttribute("class") || "") : i).split(" ").filter((a) => a);
-      f(r, (a, l) => {
+      m(r, (a, l) => {
         n.classList[t](l);
       });
     });
   };
 });
-f(["insertBefore", "insertAfter"], (e, t) => {
+m(["insertBefore", "insertAfter"], (e, t) => {
   o.fn[t] = function(i) {
     const s = e ? o(this.get().reverse()) : this, n = o(i), r = [];
     return n.each((a, l) => {
@@ -449,11 +449,11 @@ f(["insertBefore", "insertAfter"], (e, t) => {
 function _e(e) {
   return H(e) && (e[0] !== "<" || e[e.length - 1] !== ">");
 }
-f(["before", "after"], (e, t) => {
+m(["before", "after"], (e, t) => {
   o.fn[t] = function(...i) {
     return e === 1 && (i = i.reverse()), this.each((s, n) => {
       const r = A(i[0]) ? [i[0].call(n, s, n.innerHTML)] : i;
-      f(r, (a, l) => {
+      m(r, (a, l) => {
         let c;
         _e(l) ? c = o(Zt(l, "div")) : s && tt(l) ? c = o(l.cloneNode(!0)) : c = o(l), c[e ? "insertAfter" : "insertBefore"](n);
       });
@@ -461,7 +461,7 @@ f(["before", "after"], (e, t) => {
   };
 });
 o.fn.off = function(e, t, i) {
-  return U(e) ? (f(e, (s, n) => {
+  return U(e) ? (m(e, (s, n) => {
     this.off(s, t, n);
   }), this) : ((t === !1 || A(t)) && (i = t, t = void 0), i === !1 && (i = te), this.each(function() {
     ye(this, e, i, t);
@@ -469,7 +469,7 @@ o.fn.off = function(e, t, i) {
 };
 o.fn.on = function(e, t, i, s, n) {
   if (U(e))
-    return H(t) || (i = i || t, t = void 0), f(e, (r, a) => {
+    return H(t) || (i = i || t, t = void 0), m(e, (r, a) => {
       this.on(r, t, i, a, n);
     }), this;
   if (i == null && s == null ? (s = t, i = t = void 0) : s == null && (H(t) ? (s = i, i = void 0) : (s = i, i = t, t = void 0)), s === !1)
@@ -486,7 +486,7 @@ o.fn.on = function(e, t, i, s, n) {
     we(this, e, s, i, t);
   });
 };
-f(N, (e, t) => {
+m(N, (e, t) => {
   o.fn[e] = function(i) {
     return this.on(t, (s, n) => {
       i(s, n.xhr, n.options, n.data);
@@ -525,7 +525,7 @@ o.fn.remove = function(e) {
     i.parentNode && (!e || o(i).is(e)) && i.parentNode.removeChild(i);
   });
 };
-f(["prepend", "append"], (e, t) => {
+m(["prepend", "append"], (e, t) => {
   o.fn[t] = function(...i) {
     return this.each((s, n) => {
       const r = n.childNodes, a = r.length, l = a ? r[e ? a - 1 : 0] : document.createElement("div");
@@ -535,7 +535,7 @@ f(["prepend", "append"], (e, t) => {
     });
   };
 });
-f(["appendTo", "prependTo"], (e, t) => {
+m(["appendTo", "prependTo"], (e, t) => {
   o.fn[t] = function(i) {
     const s = [], n = o(i).map((a, l) => {
       const c = l.childNodes, h = c.length;
@@ -547,7 +547,7 @@ f(["appendTo", "prependTo"], (e, t) => {
     return o(s).remove(), r;
   };
 });
-f(["attr", "prop", "css"], (e, t) => {
+m(["attr", "prop", "css"], (e, t) => {
   function i(n, r, a) {
     if (!$(a))
       switch (e) {
@@ -581,7 +581,7 @@ f(["attr", "prop", "css"], (e, t) => {
   }
   o.fn[t] = function(n, r) {
     if (U(n))
-      return f(n, (a, l) => {
+      return m(n, (a, l) => {
         this[t](a, l);
       }), this;
     if (arguments.length === 1) {
@@ -596,7 +596,7 @@ f(["attr", "prop", "css"], (e, t) => {
 o.fn.children = function(e) {
   const t = [];
   return this.each((i, s) => {
-    f(s.childNodes, (n, r) => {
+    m(s.childNodes, (n, r) => {
       tt(r) && (!e || o(r).is(e)) && t.push(r);
     });
   }), new O($t(t));
@@ -626,7 +626,7 @@ function It(e, t, i, s, n) {
     }
   }), new O($t(r));
 }
-f(["", "s", "sUntil"], (e, t) => {
+m(["", "s", "sUntil"], (e, t) => {
   o.fn[`parent${t}`] = function(i, s) {
     const n = e ? o(this.get().reverse()) : this;
     return It(n, e, "parentNode", i, s);
@@ -693,7 +693,7 @@ o.fn.empty = function() {
   });
 };
 o.fn.extend = function(e) {
-  return f(e, (t, i) => {
+  return m(e, (t, i) => {
     o.fn[t] = i;
   }), this;
 };
@@ -754,8 +754,8 @@ function Ae(e, t, i, s, n, r) {
   const h = a.toString().replace(/\b[0-9.]*/, ""), u = parseFloat(a);
   a = se(e, i, u, s, n, -1) + (h || "px"), l.css(c, a);
 }
-f(["Width", "Height"], (e, t) => {
-  f([`inner${t}`, t.toLowerCase(), `outer${t}`], (i, s) => {
+m(["Width", "Height"], (e, t) => {
+  m([`inner${t}`, t.toLowerCase(), `outer${t}`], (i, s) => {
     o.fn[s] = function(n, r) {
       const a = arguments.length && (i < 2 || !pe(n)), l = n === !0 || r === !0;
       return a ? this.each((c, h) => Ae(h, c, t, i, l, n)) : this.length ? ne(this[0], t, i, l) : void 0;
@@ -767,7 +767,7 @@ o.fn.hide = function() {
     this.style.display = "none";
   });
 };
-f(["val", "html", "text"], (e, t) => {
+m(["val", "html", "text"], (e, t) => {
   const s = {
     0: "value",
     1: "innerHTML",
@@ -802,7 +802,7 @@ o.fn.index = function(e) {
 o.fn.last = function() {
   return this.eq(-1);
 };
-f(["", "All", "Until"], (e, t) => {
+m(["", "All", "Until"], (e, t) => {
   o.fn[`next${t}`] = function(i, s) {
     return It(this, e, "nextElementSibling", i, s);
   };
@@ -857,8 +857,8 @@ function Ie(e, t, i) {
   const r = oe(e), a = s.css("top"), l = s.css("left");
   let c, h;
   if ((n === "absolute" || n === "fixed") && (a + l).indexOf("auto") > -1) {
-    const d = s.position();
-    c = d.top, h = d.left;
+    const f = s.position();
+    c = f.top, h = f.left;
   } else
     c = parseFloat(a), h = parseFloat(l);
   const g = A(t) ? t.call(e, i, v({}, r)) : t;
@@ -875,7 +875,7 @@ o.fn.offset = function(e) {
 o.fn.one = function(e, t, i, s) {
   return this.on(e, t, i, s, !0);
 };
-f(["", "All", "Until"], (e, t) => {
+m(["", "All", "Until"], (e, t) => {
   o.fn[`prev${t}`] = function(i, s) {
     const n = e ? o(this.get().reverse()) : this;
     return It(n, e, "previousElementSibling", i, s);
@@ -884,7 +884,7 @@ f(["", "All", "Until"], (e, t) => {
 o.fn.removeAttr = function(e) {
   const t = e.split(" ").filter((i) => i);
   return this.each(function() {
-    f(t, (i, s) => {
+    m(t, (i, s) => {
       this.removeAttribute(s);
     });
   });
@@ -963,11 +963,11 @@ o.fn.transition = function(e) {
 o.fn.transitionEnd = function(e) {
   const t = this, i = ["webkitTransitionEnd", "transitionend"];
   function s(n) {
-    n.target === this && (e.call(this, n), f(i, (r, a) => {
+    n.target === this && (e.call(this, n), m(i, (r, a) => {
       t.off(a, s);
     }));
   }
-  return f(i, (n, r) => {
+  return m(i, (n, r) => {
     t.on(r, s);
   }), this;
 };
@@ -989,7 +989,7 @@ function Et(e, t, i, s) {
 o.fn.mutation = function() {
   return this.each((e, t) => {
     const i = o(t);
-    f(re, (s, n) => {
+    m(re, (s, n) => {
       i.is(s) && Et(s, n, e, t), i.find(s).each((r, a) => {
         Et(s, n, r, a);
       });
@@ -1047,7 +1047,7 @@ o.guid = function(e) {
   const i = "_" + t() + t() + "-" + t() + "-" + t() + "-" + t() + "-" + t() + t() + t();
   return $(e) || (xt[e] = i), i;
 };
-m.mutation = function(e, t) {
+d.mutation = function(e, t) {
   if ($(e) || $(t)) {
     o(document).mutation();
     return;
@@ -1183,7 +1183,7 @@ class He extends ae {
     return "collapse";
   }
 }
-m.Collapse = He;
+d.Collapse = He;
 function z(e, t) {
   const i = o(e).attr(t);
   return i ? new Function(
@@ -1193,8 +1193,8 @@ function z(e, t) {
 }
 const Rt = "mdui-collapse";
 o(() => {
-  m.mutation(`[${Rt}]`, function() {
-    new m.Collapse(this, z(this, Rt));
+  d.mutation(`[${Rt}]`, function() {
+    new d.Collapse(this, z(this, Rt));
   });
 });
 const T = o(document), E = o(window);
@@ -1311,23 +1311,23 @@ class Ne {
     function g() {
       t.$element[0].style.transform = "", t.$element[0].style.webkitTransform = "", t.$element[0].style.transition = "", t.$element[0].style.webkitTransition = "";
     }
-    function d() {
+    function f() {
       return t.$element.width() + 10;
     }
     function b(y) {
       return Math.min(
         Math.max(
-          a === "closing" ? r - y : d() + r - y,
+          a === "closing" ? r - y : f() + r - y,
           0
         ),
-        d()
+        f()
       );
     }
     function I(y) {
       if (a) {
         let w = y.changedTouches[0].pageX;
         t.position === "right" && (w = c.width() - w);
-        const j = b(w) / d();
+        const j = b(w) / f();
         l = !1;
         const x = a;
         a = null, x === "opening" ? j < 0.92 ? (g(), t.open()) : g() : j > 0.08 ? (g(), t.close()) : g(), o.unlockScreen();
@@ -1408,13 +1408,13 @@ class Ne {
     return this.state;
   }
 }
-m.Drawer = Ne;
+d.Drawer = Ne;
 const Nt = "mdui-drawer";
 o(() => {
-  m.mutation(`[${Nt}]`, function() {
+  d.mutation(`[${Nt}]`, function() {
     const e = o(this), t = z(this, Nt), i = t.target;
     delete t.target;
-    const s = o(i).first(), n = new m.Drawer(s, t);
+    const s = o(i).first(), n = new d.Drawer(s, t);
     e.on("click", () => n.toggle());
   });
 });
@@ -1562,7 +1562,7 @@ class Fe {
 T.on("keydown", (e) => {
   k && k.options.closeOnEsc && k.state === "opened" && e.keyCode === 27 && k.close();
 });
-m.Dialog = Fe;
+d.Dialog = Fe;
 const jt = "mdui-dialog", Ft = "_mdui_dialog";
 o(() => {
   T.on("click", `[${jt}]`, function() {
@@ -1570,7 +1570,7 @@ o(() => {
     delete e.target;
     const i = o(t).first();
     let s = i.data(Ft);
-    s || (s = new m.Dialog(i, e), i.data(Ft, s)), s.open();
+    s || (s = new d.Dialog(i, e), i.data(Ft, s)), s.open();
   });
 });
 const Be = {
@@ -1604,15 +1604,15 @@ const Be = {
   onClosed: () => {
   }
 };
-m.dialog = function(e) {
-  e = v({}, We, e), f(e.buttons, (n, r) => {
+d.dialog = function(e) {
+  e = v({}, We, e), m(e.buttons, (n, r) => {
     e.buttons[n] = v({}, Be, r);
   });
   let t = "";
-  e.buttons?.length && (t = `<div class="mdui-dialog-actions${e.stackedButtons ? " mdui-dialog-actions-stacked" : ""}">`, f(e.buttons, (n, r) => {
+  e.buttons?.length && (t = `<div class="mdui-dialog-actions${e.stackedButtons ? " mdui-dialog-actions-stacked" : ""}">`, m(e.buttons, (n, r) => {
     t += `<a href="javascript:void(0)" class="mdui-btn mdui-ripple mdui-text-color-primary ${r.bold ? "mdui-btn-bold" : ""}">${r.text}</a>`;
   }), t += "</div>");
-  const i = `<div class="mdui-dialog ${e.cssClass}">` + (e.title ? `<div class="mdui-dialog-title">${e.title}</div>` : "") + (e.content ? `<div class="mdui-dialog-content">${e.content}</div>` : "") + t + "</div>", s = new m.Dialog(i, {
+  const i = `<div class="mdui-dialog ${e.cssClass}">` + (e.title ? `<div class="mdui-dialog-title">${e.title}</div>` : "") + (e.content ? `<div class="mdui-dialog-content">${e.content}</div>` : "") + t + "</div>", s = new d.Dialog(i, {
     history: e.history,
     overlay: e.overlay,
     modal: e.modal,
@@ -1640,9 +1640,9 @@ const Ue = {
   closeOnEsc: !0,
   closeOnConfirm: !0
 };
-m.alert = function(e, t, i, s) {
+d.alert = function(e, t, i, s) {
   return A(t) && (s = i, i = t, t = ""), $(i) && (i = () => {
-  }), $(s) && (s = {}), s = v({}, Ue, s), m.dialog({
+  }), $(s) && (s = {}), s = v({}, Ue, s), d.dialog({
     title: t,
     content: e,
     buttons: [
@@ -1668,10 +1668,10 @@ const qe = {
   closeOnCancel: !0,
   closeOnConfirm: !0
 };
-m.confirm = function(e, t, i, s, n) {
+d.confirm = function(e, t, i, s, n) {
   return A(t) && (n = s, s = i, i = t, t = ""), $(i) && (i = () => {
   }), $(s) && (s = () => {
-  }), $(n) && (n = {}), n = v({}, qe, n), m.dialog({
+  }), $(n) && (n = {}), n = v({}, qe, n), d.dialog({
     title: t,
     content: e,
     buttons: [
@@ -1710,8 +1710,8 @@ function Ye(e, t = {}) {
     const h = r;
     let u = !1;
     h.replace(/[\r\n]/g, "") === "" && (s.val(" " + h), u = !0), s.outerHeight("");
-    const g = s.outerHeight(), d = i.scrollHeight;
-    d > g && s.outerHeight(d), u && s.val(h);
+    const g = s.outerHeight(), f = i.scrollHeight;
+    f > g && s.outerHeight(f), u && s.val(h);
   }
   t.reInit && l.find(".mdui-textfield-counter").remove();
   const c = s.attr("maxlength");
@@ -1737,13 +1737,13 @@ o(() => {
     function() {
       o(this).parents(".mdui-textfield").removeClass("mdui-textfield-expanded").find(".mdui-textfield-input").val("");
     }
-  ), m.mutation(".mdui-textfield", function() {
+  ), d.mutation(".mdui-textfield", function() {
     o(this).find(".mdui-textfield-input").trigger("input", {
       domLoadedEvent: !0
     });
   });
 });
-m.updateTextFields = function(e) {
+d.updateTextFields = function(e) {
   ($(e) ? o(".mdui-textfield") : o(e)).each((i, s) => {
     o(s).find(".mdui-textfield-input").trigger("input", {
       reInit: !0
@@ -1763,7 +1763,7 @@ const Xe = {
   defaultValue: "",
   confirmOnEnter: !1
 };
-m.prompt = function(e, t, i, s, n) {
+d.prompt = function(e, t, i, s, n) {
   A(t) && (n = s, s = i, i = t, t = ""), $(i) && (i = () => {
   }), $(s) && (s = () => {
   }), $(n) && (n = {}), n = v({}, Xe, n);
@@ -1774,7 +1774,7 @@ m.prompt = function(e, t, i, s, n) {
     const h = c.$element.find(".mdui-textfield-input").val();
     i(h, c);
   };
-  return m.dialog({
+  return d.dialog({
     title: t,
     content: r,
     buttons: [
@@ -1797,7 +1797,7 @@ m.prompt = function(e, t, i, s, n) {
     closeOnEsc: n.closeOnEsc,
     onOpen: (c) => {
       const h = c.$element.find(".mdui-textfield-input");
-      m.updateTextFields(h), h[0].focus(), n.type !== "textarea" && n.confirmOnEnter === !0 && h.on("keydown", (u) => {
+      d.updateTextFields(h), h[0].focus(), n.type !== "textarea" && n.confirmOnEnter === !0 && h.on("keydown", (u) => {
         if (u.keyCode === 13) {
           const g = c.$element.find(".mdui-textfield-input").val();
           return i(g, c), n.closeOnConfirm && c.close(), !1;
@@ -1852,8 +1852,8 @@ class Je {
     let t, i, s, n;
     const r = E.height(), a = E.width(), l = this.options.gutter, c = this.isCovered, h = this.options.fixed;
     let u, g;
-    const d = this.$element.width(), b = this.$element.height(), I = this.$anchor[0].getBoundingClientRect(), _ = I.top, S = I.left, L = I.height, y = I.width, w = r - _ - L, j = a - S - y, x = this.$anchor[0].offsetTop, P = this.$anchor[0].offsetLeft;
-    if (this.options.position === "auto" ? w + (c ? L : 0) > b + l ? s = "bottom" : _ + (c ? L : 0) > b + l ? s = "top" : s = "center" : s = this.options.position, this.options.align === "auto" ? j + y > d + l ? n = "left" : S + y > d + l ? n = "right" : n = "center" : n = this.options.align, s === "bottom")
+    const f = this.$element.width(), b = this.$element.height(), I = this.$anchor[0].getBoundingClientRect(), _ = I.top, S = I.left, L = I.height, y = I.width, w = r - _ - L, j = a - S - y, x = this.$anchor[0].offsetTop, P = this.$anchor[0].offsetLeft;
+    if (this.options.position === "auto" ? w + (c ? L : 0) > b + l ? s = "bottom" : _ + (c ? L : 0) > b + l ? s = "top" : s = "center" : s = this.options.position, this.options.align === "auto" ? j + y > f + l ? n = "left" : S + y > f + l ? n = "right" : n = "center" : n = this.options.align, s === "bottom")
       g = "0", i = (c ? 0 : L) + (h ? _ : x);
     else if (s === "top")
       g = "100%", i = (c ? L : 0) + (h ? _ - b : x - b);
@@ -1865,11 +1865,11 @@ class Je {
     if (this.$element.css("top", `${i}px`), n === "left")
       u = "0", t = h ? S : P;
     else if (n === "right")
-      u = "100%", t = h ? S + y - d : P + y - d;
+      u = "100%", t = h ? S + y - f : P + y - f;
     else {
       u = "50%";
-      let C = d;
-      d + l * 2 > a && (C = a - l * 2, this.$element.width(C)), t = (a - C) / 2 + (h ? 0 : P - S);
+      let C = f;
+      f + l * 2 > a && (C = a - l * 2, this.$element.width(C)), t = (a - C) / 2 + (h ? 0 : P - S);
     }
     this.$element.css("left", `${t}px`), this.$element.transformOrigin(`${u} ${g}`);
   }
@@ -1882,8 +1882,8 @@ class Je {
     let s, n, r, a;
     const l = E.height(), c = E.width();
     let h, u;
-    const g = t.width(), d = t.height(), b = i[0].getBoundingClientRect(), I = b.width, _ = b.height, S = b.left, L = b.top;
-    l - L > d ? r = "bottom" : L + _ > d ? r = "top" : r = "bottom", c - S - I > g ? a = "left" : S > g ? a = "right" : a = "left", r === "bottom" ? (u = "0", s = "0") : r === "top" && (u = "100%", s = -d + _), t.css("top", `${s}px`), a === "left" ? (h = "0", n = I) : a === "right" && (h = "100%", n = -g), t.css("left", `${n}px`), t.transformOrigin(`${h} ${u}`);
+    const g = t.width(), f = t.height(), b = i[0].getBoundingClientRect(), I = b.width, _ = b.height, S = b.left, L = b.top;
+    l - L > f ? r = "bottom" : L + _ > f ? r = "top" : r = "bottom", c - S - I > g ? a = "left" : S > g ? a = "right" : a = "left", r === "bottom" ? (u = "0", s = "0") : r === "top" && (u = "100%", s = -f + _), t.css("top", `${s}px`), a === "left" ? (h = "0", n = I) : a === "right" && (h = "100%", n = -g), t.css("left", `${n}px`), t.transformOrigin(`${h} ${u}`);
   }
   /**
    * 打开子菜单
@@ -1993,7 +1993,7 @@ class Je {
     }), this.$element.removeClass("mdui-menu-open").addClass("mdui-menu-closing").transitionEnd(() => this.transitionEnd()));
   }
 }
-m.Menu = Je;
+d.Menu = Je;
 const Bt = "mdui-menu", Wt = "_mdui_menu";
 o(() => {
   T.on("click", `[${Bt}]`, function() {
@@ -2001,7 +2001,7 @@ o(() => {
     let t = e.data(Wt);
     if (!t) {
       const i = z(this, Bt), s = i.target;
-      delete i.target, t = new m.Menu(e, s, i), e.data(Wt, t), t.toggle();
+      delete i.target, t = new d.Menu(e, s, i), e.data(Wt, t), t.toggle();
     }
   });
 });
@@ -2086,14 +2086,14 @@ class Ge {
     }));
   }
 }
-m.snackbar = function(e, t = {}) {
+d.snackbar = function(e, t = {}) {
   H(e) ? t.message = e : t = e;
   const i = new Ge(t);
   return i.open(), i;
 };
 function ue(e) {
-  const t = e.data(), i = t._slider_$track, s = t._slider_$fill, n = t._slider_$thumb, r = t._slider_$input, a = t._slider_min, l = t._slider_max, c = t._slider_disabled, h = t._slider_discrete, u = t._slider_$thumbText, g = r.val(), d = (g - a) / (l - a) * 100;
-  s.width(`${d}%`), i.width(`${100 - d}%`), c && (s.css("padding-right", "6px"), i.css("padding-left", "6px")), n.css("left", `${d}%`), h && u.text(g), d === 0 ? e.addClass("mdui-slider-zero") : e.removeClass("mdui-slider-zero");
+  const t = e.data(), i = t._slider_$track, s = t._slider_$fill, n = t._slider_$thumb, r = t._slider_$input, a = t._slider_min, l = t._slider_max, c = t._slider_disabled, h = t._slider_discrete, u = t._slider_$thumbText, g = r.val(), f = (g - a) / (l - a) * 100;
+  s.width(`${f}%`), i.width(`${100 - f}%`), c && (s.css("padding-right", "6px"), i.css("padding-left", "6px")), n.css("left", `${f}%`), h && u.text(g), f === 0 ? e.addClass("mdui-slider-zero") : e.removeClass("mdui-slider-zero");
 }
 function de(e) {
   const t = o('<div class="mdui-slider-track"></div>'), i = o('<div class="mdui-slider-fill"></div>'), s = o('<div class="mdui-slider-thumb"></div>'), n = e.find('input[type="range"]'), r = n[0].disabled, a = e.hasClass("mdui-slider-discrete");
@@ -2114,11 +2114,11 @@ o(() => {
     if (!nt(e) || this.disabled)
       return;
     o(this).parent().removeClass("mdui-slider-focus");
-  }), T.on(Mt, ht, K), m.mutation(".mdui-slider", function() {
+  }), T.on(Mt, ht, K), d.mutation(".mdui-slider", function() {
     de(o(this));
   });
 });
-m.updateSliders = function(e) {
+d.updateSliders = function(e) {
   ($(e) ? o(".mdui-slider") : o(e)).each((i, s) => {
     de(o(s));
   });
@@ -2192,7 +2192,7 @@ class Ze {
     return this.state;
   }
 }
-m.Headroom = Ze;
+d.Headroom = Ze;
 o(() => {
   T.on("click", ".mdui-bottom-nav>a", function() {
     const e = o(this), t = e.parent();
@@ -2202,8 +2202,8 @@ o(() => {
         index: i
       }), n ? o(s).addClass("mdui-bottom-nav-active") : o(s).removeClass("mdui-bottom-nav-active");
     });
-  }), m.mutation(".mdui-bottom-nav-scroll-hide", function() {
-    new m.Headroom(this, {
+  }), d.mutation(".mdui-bottom-nav-scroll-hide", function() {
+    new d.Headroom(this, {
       pinnedClass: "mdui-headroom-pinned-down",
       unpinnedClass: "mdui-headroom-unpinned-down"
     });
@@ -2277,12 +2277,12 @@ class fe {
 }
 const mt = "_mdui_table";
 o(() => {
-  m.mutation(".mdui-table", function() {
+  d.mutation(".mdui-table", function() {
     const e = o(this);
     e.data(mt) || e.data(mt, new fe(e));
   });
 });
-m.updateTables = function(e) {
+d.updateTables = function(e) {
   ($(e) ? o(".mdui-table") : o(e)).each((i, s) => {
     const n = o(s), r = n.data(mt);
     r ? r.init() : n.data(mt, new fe(n));
@@ -2293,17 +2293,27 @@ class ti extends ae {
     return "panel";
   }
 }
-m.Panel = ti;
+d.Panel = ti;
 const qt = "mdui-panel";
 o(() => {
-  m.mutation(`[${qt}]`, function() {
-    new m.Panel(this, z(this, qt));
+  d.mutation(`[${qt}]`, function() {
+    new d.Panel(this, z(this, qt));
+  });
+});
+o(() => {
+  d.mutation(".mdui-appbar-scroll-hide", function() {
+    new d.Headroom(this);
+  }), d.mutation(".mdui-appbar-scroll-toolbar-hide", function() {
+    new d.Headroom(this, {
+      pinnedClass: "mdui-headroom-pinned-toolbar",
+      unpinnedClass: "mdui-headroom-unpinned-toolbar"
+    });
   });
 });
 const zt = "mdui-headroom";
 o(() => {
-  m.mutation(`[${zt}]`, function() {
-    new m.Headroom(this, z(this, zt));
+  d.mutation(`[${zt}]`, function() {
+    new d.Headroom(this, z(this, zt));
   });
 });
 const ei = {
@@ -2425,11 +2435,11 @@ class ii {
     }), this.$tabs = i, this.setActive();
   }
 }
-m.Tab = ii;
+d.Tab = ii;
 const Yt = "mdui-tab";
 o(() => {
-  m.mutation(`[${Yt}]`, function() {
-    new m.Tab(this, z(this, Yt));
+  d.mutation(`[${Yt}]`, function() {
+    new d.Tab(this, z(this, Yt));
   });
 });
 const si = {
@@ -2547,13 +2557,13 @@ class ni {
     return this.state;
   }
 }
-m.Tooltip = ni;
+d.Tooltip = ni;
 const Xt = "mdui-tooltip", Vt = "_mdui_tooltip";
 o(() => {
   T.on("touchstart mouseover", `[${Xt}]`, function() {
     const e = o(this);
     let t = e.data(Vt);
-    t || (t = new m.Tooltip(
+    t || (t = new d.Tooltip(
       this,
       z(this, Xt)
     ), e.data(Vt, t));
@@ -2585,8 +2595,8 @@ class ri {
     else {
       const g = t - this.options.gutter * 2;
       l > g && (l = g), u = -(r + this.selectedIndex * n + (n - i) / 2);
-      const d = -(r + (this.size - 1) * n + (n - i) / 2);
-      u < d && (u = d);
+      const f = -(r + (this.size - 1) * n + (n - i) / 2);
+      u < f && (u = f);
       const b = c + u;
       b < this.options.gutter ? u = -(c - this.options.gutter) : b + l + this.options.gutter > t && (u = -(c + l + this.options.gutter - t)), h = `${this.selectedIndex * n + n / 2 + r}px`;
     }
@@ -2676,15 +2686,15 @@ class ri {
     return this.state;
   }
 }
-m.Select = ri;
+d.Select = ri;
 const Jt = "mdui-select";
 o(() => {
-  m.mutation(`[${Jt}]`, function() {
-    new m.Select(this, z(this, Jt));
+  d.mutation(`[${Jt}]`, function() {
+    new d.Select(this, z(this, Jt));
   });
 });
-globalThis.mdui = m;
+globalThis.mdui = d;
 export {
-  m as default
+  d as default
 };
 //# sourceMappingURL=mdui-lite.js.map
