@@ -173,7 +173,7 @@ function themeConfig($form): void
     ?>
 
     <!-- 配置中心=>CSS [Start] -->
-    <?php foreach (['mdui-lite.css?v=261006', 'md2.css', 'dreamcat.css?v=261005b'] as $stylesheet) : ?>
+    <?php foreach (['mdui-lite.css?v=261006b', 'md2.css', 'dreamcat.css?v=261005b'] as $stylesheet) : ?>
         <link rel="stylesheet" href="<?php CustomCDN_FAM('DreamCat_StaticResources/css/', '', 'css/' . $stylesheet, $stylesheet); ?>" >
     <?php endforeach; ?>
     <style>
@@ -585,7 +585,7 @@ function themeConfig($form): void
         </div>
 
         <!-- 配置中心=>JS [Start] -->
-        <?php foreach (['mdui-lite.js?v=261006', 'dreamcat.js'] as $script) : ?>
+        <?php foreach (['mdui-lite.js?v=261006b', 'dreamcat.js'] as $script) : ?>
             <script src="<?php CustomCDN_FAM('DreamCat_StaticResources/js/', '', 'js/' . $script, $script); ?>" ></script >
         <?php endforeach; ?>
         <!-- 配置中心=>JS [End] -->
