@@ -55,7 +55,7 @@ $dreamcatAccentHex = dreamcatThemeColorHex('accent', $dreamcatAccentColor);
 	<!-- 使用url函数转换相关路径 -->
 	<link rel="shortcut icon" href="<?php echo($this->options->DC_WebFavicon()); ?>" type="image/x-icon" />
 	<link rel="stylesheet"
-	      href="<?php CustomCDN_FAM('DreamCat_StaticResources/css/', '', 'css/mdui-lite.css?v=261006c', 'mdui-lite.css'); ?>" >
+	      href="<?php CustomCDN_FAM('DreamCat_StaticResources/css/', '', 'css/mdui-lite.css?v=261008a', 'mdui-lite.css'); ?>" >
 	<link rel="stylesheet"
 	      href="<?php CustomCDN_FAM('DreamCat_StaticResources/css/', '', 'css/md2.css', 'md2.css'); ?>" >
 	<link rel="stylesheet"
@@ -177,7 +177,19 @@ $dreamcatAccentHex = dreamcatThemeColorHex('accent', $dreamcatAccentColor);
 	        $md_height=300;
 	    }
 
+		// 内容头(.dreamcat-content-header)必须盖住整条横幅, 否则横幅底部会露出一条异色:
+		// min-height = max(232px, 横幅高 - appbar高)。appbar 高与 .mdui-toolbar 同源
+		// (56px 竖屏 / 64px ≥600px / 48px 横屏≤959.9px); 横幅高随 .mdui-hidden-* 断点切换
+		// (sm/md 分界在 1024px), 与 mdui 保持同源。
+		$md_h = max(0, (int)$md_height);
+		$sm_h = max(0, (int)$sm_height);
+
         echo <<<EOF
+		:root { --dreamcat-banner-h: {$sm_h}px; --dreamcat-appbar-h: 56px; }
+		@media (min-width: 600px) { :root { --dreamcat-appbar-h: 64px; } }
+		@media (orientation: landscape) and (max-width: 959.9px) { :root { --dreamcat-appbar-h: 48px; } }
+		@media (min-width: 1024px) { :root { --dreamcat-banner-h: {$md_h}px; } }
+		.dreamcat-content-header { min-height: max(232px, calc(var(--dreamcat-banner-h) - var(--dreamcat-appbar-h))); }
 		.dreamcat-img-header-md { height:{$md_height}px; }
 		.dreamcat-img-header-sm { height:{$sm_height}px; }
 
